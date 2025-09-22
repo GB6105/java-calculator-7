@@ -1,14 +1,14 @@
 package calculator.util;
 
-import calculator.dto.ParsedResult;
+import calculator.dto.ParseResultDTO;
 import java.util.regex.Pattern;
 
 public class Parser {
 
   public static int[] parseStringToIntArray(String input) {
-    ParsedResult parsedResult = Validator.validate(input);
-    String customSeparator = parsedResult.getCustomSeparator();
-    String mainString = parsedResult.getMainString();
+    ParseResultDTO parsedResult = Validator.validate(input);
+    String customSeparator = parsedResult.customSeparator();
+    String mainString = parsedResult.mainString();
 
     String splitRegex;
     if(customSeparator == null || customSeparator.isEmpty()){

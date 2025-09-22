@@ -1,12 +1,12 @@
 package calculator.util;
 
-import calculator.dto.ParsedResult;
+import calculator.dto.ParseResultDTO;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validator {
 
-  public static ParsedResult validate(String input) {
+  public static ParseResultDTO validate(String input) {
     if (input == null) {
       throw new IllegalArgumentException(Constant.NORMAL_INPUT_ERROR_MESSAGE);
     }
@@ -14,7 +14,7 @@ public class Validator {
 
     //일반 문자열 검증
     if (Pattern.matches(Constant.NORMAL_INPUT_STRING_REGEX, input)) {
-      return new ParsedResult(null, input);
+      return new ParseResultDTO(null, input);
     }
 
     Matcher matcher = Pattern.compile(Constant.CUSTOM_INPUT_STRING_REGEX).matcher(input);
@@ -31,7 +31,7 @@ public class Validator {
     if (!Pattern.matches(finalPattern, mainString)) {
       throw new IllegalArgumentException(Constant.CUSTOM_INPUT_ERROR_MESSAGE);
     }
-    return new ParsedResult(customSeparator, mainString);
+    return new ParseResultDTO(customSeparator, mainString);
   }
 
 }

@@ -1,10 +1,9 @@
 package calculator;
 
-import calculator.dto.ParsedResult;
+import calculator.dto.ParseResultDTO;
 import calculator.util.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestClassOrder;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,16 +31,16 @@ class ApplicationTest extends NsTest {
 
   @Test
   void 기본_문자열_검증() {
-    ParsedResult pr = Validator.validate("1,2:3");
-    assertNull(pr.getCustomSeparator());
-    assertEquals("1,2:3", pr.getMainString());
+    ParseResultDTO pr = Validator.validate("1,2:3");
+    assertNull(pr.customSeparator());
+    assertEquals("1,2:3", pr.mainString());
   }
 
   @Test
   void 커스텀_구분자_구분기능() {
-    ParsedResult pr = Validator.validate("//&\n1,2:3");
-    assertEquals("&", pr.getCustomSeparator());
-    assertEquals("1,2:3", pr.getMainString());
+    ParseResultDTO pr = Validator.validate("//&\n1,2:3");
+    assertEquals("&", pr.customSeparator());
+    assertEquals("1,2:3", pr.mainString());
   }
 
   @Test
