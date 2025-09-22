@@ -1,8 +1,9 @@
 package calculator.dto;
 
-public class ParsedResult {
+public final class ParsedResult {
   private final String customSeparator;
   private final String mainString;
+  // record로 작성해보기
 
   public ParsedResult(String customSeparator, String mainString) {
     this.customSeparator = customSeparator;

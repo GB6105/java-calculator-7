@@ -12,14 +12,14 @@ public class CalculatorController {
     this.calculatorView = calculatorView;
   }
 
-  public void run() {
+  public void start() {
     try {
       String input = calculatorView.readInput();
       int[] targetNumbers = Parser.parseStringToIntArray(input);
       int result = CalculatorService.calculate(targetNumbers);
       calculatorView.printResult(result);
     } catch (IllegalAccessError e) {
-      e.printStackTrace();
+      throw new IllegalAccessError(e.getMessage());
     }
   }
 }

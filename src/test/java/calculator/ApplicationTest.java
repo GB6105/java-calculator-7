@@ -4,6 +4,7 @@ import calculator.dto.ParsedResult;
 import calculator.util.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestClassOrder;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -55,6 +56,14 @@ class ApplicationTest extends NsTest {
   void 입력값_예외_테스트_숫자_부족() {
     assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("4,5,6,"))
+                    .isInstanceOf(IllegalArgumentException.class)
+    );
+  }
+
+  @Test
+  void 숫자값_범위(){
+    assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("//;\\n2147483648"))
                     .isInstanceOf(IllegalArgumentException.class)
     );
   }
